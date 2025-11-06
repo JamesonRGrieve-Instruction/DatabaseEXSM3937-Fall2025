@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS
         id INTEGER,
         first_name TEXT,
         last_name TEXT,
-        date_of_birth TEXT
+        date_of_birth DATE
     );
 
 CREATE TABLE IF NOT EXISTS
@@ -26,8 +26,8 @@ CREATE TABLE IF NOT EXISTS
         id INTEGER,
         code TEXT,
         name TEXT,
-        start_date TEXT,
-        end_date TEXT
+        start_date DATE,
+        end_date DATE
     );
 
 CREATE TABLE IF NOT EXISTS
