@@ -1,5 +1,11 @@
 -- database: ./my-database.db
--- DELETE FROM user;
+UPDATE user
+SET
+    first_name = 'Suzy'
+WHERE
+    user_id = 43
+    AND section_id = 1;
+
 -- INSERT INTO
 --     user (first_name, last_name, date_of_birth)
 -- VALUES
@@ -33,7 +39,27 @@
 --     section (beginning_time, duration_minutes, name, course_id)
 -- VALUES
 --     ('21:00', 120, 'FA2025-01', 1)
-INSERT INTO
-    user_sections (user_id, role_id, section_id)
-VALUES
-    (43, 1, 1);
+-- INSERT INTO
+--     user_sections (user_id, role_id, section_id)
+-- VALUES
+--     (43, 1, 1);
+SELECT
+    id,
+    date_of_birth
+FROM
+    user;
+
+SELECT
+    id,
+    date_of_birth
+FROM
+    user
+WHERE
+    last_name = 'Doe';
+
+SELECT
+    COUNT(DISTINCT last_name)
+FROM
+    user
+WHERE
+    last_name = 'Doe';
