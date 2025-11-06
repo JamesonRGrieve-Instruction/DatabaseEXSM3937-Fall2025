@@ -29,7 +29,8 @@ CREATE TABLE IF NOT EXISTS
         code TEXT,
         name TEXT,
         start_date DATE,
-        end_date DATE
+        end_date DATE,
+        CHECK (date(end_date) > date(start_date))
     );
 
 CREATE TABLE IF NOT EXISTS
@@ -50,7 +51,8 @@ CREATE TABLE IF NOT EXISTS
         section_id INTEGER,
         FOREIGN KEY (user_id) REFERENCES user (id),
         FOREIGN KEY (role_id) REFERENCES role (id),
-        FOREIGN KEY (section_id) REFERENCES section (id)
+        FOREIGN KEY (section_id) REFERENCES section (id),
+        UNIQUE (user_id, section_id)
     );
 
 -- Show the names of all tables in the database.
