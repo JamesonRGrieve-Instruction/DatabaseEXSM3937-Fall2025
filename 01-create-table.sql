@@ -1,4 +1,14 @@
 -- database: ./my-database.db
+DROP TABLE IF EXISTS user_sections;
+
+DROP TABLE IF EXISTS section;
+
+DROP TABLE IF EXISTS course;
+
+DROP TABLE IF EXISTS role;
+
+DROP TABLE IF EXISTS user;
+
 -- Create the user table.
 CREATE TABLE IF NOT EXISTS
     user (
