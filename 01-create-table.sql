@@ -1,4 +1,6 @@
 -- database: ./my-database.db
+PRAGMA foreign_keys = ON;
+
 DROP TABLE IF EXISTS user_sections;
 
 DROP TABLE IF EXISTS section;
@@ -36,7 +38,8 @@ CREATE TABLE IF NOT EXISTS
         beginning_time TEXT,
         duration_minutes INTEGER,
         name TEXT,
-        course_id INTEGER
+        course_id INTEGER,
+        FOREIGN KEY (course_id) REFERENCES course (id)
     );
 
 CREATE TABLE IF NOT EXISTS
@@ -44,7 +47,10 @@ CREATE TABLE IF NOT EXISTS
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         user_id INTEGER,
         role_id INTEGER,
-        section_id INTEGER
+        section_id INTEGER,
+        FOREIGN KEY (user_id) REFERENCES user (id),
+        FOREIGN KEY (role_id) REFERENCES role (id),
+        FOREIGN KEY (section_id) REFERENCES section (id)
     );
 
 -- Show the names of all tables in the database.
