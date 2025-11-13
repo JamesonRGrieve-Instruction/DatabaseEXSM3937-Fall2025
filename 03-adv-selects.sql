@@ -63,15 +63,37 @@ FROM
     SalesOrderDetail;
 
 -- Only Select Columns That Are Aggregates or Also In GROUP BY
+-- WHERE Filters BEFORE Group By
+-- HAVING Filters AFTER Group By
 SELECT
     ProductID AS 'Product ID Group',
     SUM(OrderQty) AS 'Total Sales For Group'
 FROM
     SalesOrderDetail
+WHERE
+    UnitPriceDiscount = 0
 GROUP BY
-    ProductID;
+    ProductID
+HAVING
+    SUM(OrderQty) > 25;
 
 SELECT
     *
 FROM
     SalesOrderDetail;
+
+-- If we have multiple GROUP BYs, it will first group
+-- by the first column, then it will check for multiple
+-- values in the second column - if multiple values exist,
+-- it will partition the group into sub-groups on that value.
+SELECT
+    ProductID AS 'Product ID Group',
+    UnitPriceDiscount AS 'Discount',
+    SUM(OrderQty) AS 'Total Sales For Group'
+FROM
+    SalesOrderDetail
+GROUP BY
+    ProductID,
+    UnitPriceDiscount
+HAVING
+    SUM(OrderQty) > 25;
